@@ -198,7 +198,7 @@ const P5Component = () => {
 
       function spawnAsteroids(count) {
         for (let i = 0; i < count; i++) {
-          game.asteroids.push(new Asteroid());
+          game.asteroids.push(new Asteroid(p.random(p.width), p.random(p.height), p.random(20, 50)));
         }
       }
 
@@ -256,6 +256,10 @@ const P5Component = () => {
       }
 
       class Player {
+        pos: any;
+        vel: any;
+        angle: number;
+        lives: number;
         constructor() {
           this.pos = p.createVector(p.width / 2, p.height / 2);
           this.vel = p.createVector(0, 0);
@@ -308,6 +312,10 @@ const P5Component = () => {
       }
 
       class Asteroid {
+        vel: p5.Vector;
+        size: any;
+        pos: any;
+        points: any[];
         constructor(x, y, size) {
           this.pos = p.createVector(
             x || p.random(p.width),
@@ -355,6 +363,8 @@ const P5Component = () => {
       }
 
       class Bullet {
+        pos: any;
+        vel: p5.Vector;
         constructor() {
           if (!game.player) return;
           this.pos = game.player.pos.copy();
