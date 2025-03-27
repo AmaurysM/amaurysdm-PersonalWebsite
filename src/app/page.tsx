@@ -19,12 +19,13 @@ export default function Home() {
             <div className="flex justify-center">
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-amber-700 shadow-2xl group">
                 <Image
-                  src="/profilePic.jpg"
+                  src="/profilePicture.png"
                   alt="Amaurys De Los Santos Mendez"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out transform group-hover:scale-105"
                 />
+
                 <div className="absolute inset-0 bg-amber-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
               </div>
             </div>
