@@ -1,103 +1,388 @@
+"use client";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
+enum Direction {
+  LEFT,
+  RIGHT,
+}
+
+const AnimatedSection = ({ children, direction }: { children: ReactNode, direction: Direction }) => {
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+
+  const fromLeft = direction === Direction.LEFT;
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ x: fromLeft ? -100 : 100, opacity: 0 }}
+      animate={inView ? { x: 0, opacity: 1 } : {}}
+      transition={{ duration: 0.7, ease: "easeInOut" }}
+      className="w-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const SkillBadge = ({ skill }: { skill: string }) => (
+  <span className="px-3 py-1 bg-amber-900/30 text-amber-200 rounded-full text-sm transition-colors hover:bg-amber-900/50">
+    {skill}
+  </span>
+);
+
+const ProjectItem = ({ title, description, technologies, features, direction, githubLink, learnMoreDest }: {
+  title: string;
+  description: string;
+  technologies: string[];
+  features: string[];
+  direction: Direction;
+  githubLink?: string;
+  learnMoreDest?: string;
+}) => (
+  <AnimatedSection direction={direction}>
+    <div className="relative w-full mb-16 bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-amber-900/20 hover:border-amber-500/30 transition-all duration-300 ease-in-out">
+      <div className="grid md:grid-cols-1 gap-8 p-8">
+        <div className="space-y-6">
+          <div>
+            <div className="flex justify-between items-center">
+              <h3 className="text-3xl font-bold text-amber-500 mb-3">{title}</h3>
+              {githubLink && (
+                <a
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-400 hover:text-amber-300 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                </a>
+              )}
+            </div>
+            <p className="text-gray-300 leading-relaxed text-lg">{description}</p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <h4 className="text-xl font-semibold text-amber-400 mb-2">Key Features:</h4>
+              <ul className="space-y-2 text-gray-200">
+                {features.map((feature, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center space-x-2 before:content-['✦'] before:text-amber-500 before:mr-2"
+                  >
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xl font-semibold text-amber-400 mb-3">Technologies:</h4>
+              <div className="flex flex-wrap gap-3">
+                {technologies.map((tech, index) => (
+                  <SkillBadge key={index} skill={tech} />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-4">
+            {(learnMoreDest) && (
+              <Link
+                href={`${learnMoreDest}`}
+                className="px-4 py-2 bg-amber-600 text-white rounded-full hover:bg-amber-500 transition-colors"
+              >
+                See More
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </AnimatedSection>
+);
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const skills = [
+    "Kotlin", "JavaScript", "Java", "Python", "C", "C++", "Swift",
+    "MySQL", "MongoDB", "SQLite", "Firebase",
+    "CSS", "Tailwind", "Jetpack Compose"
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-amber-950 to-amber-900 text-white overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
+          <AnimatedSection direction={Direction.LEFT}>
+            <div className="flex justify-center">
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-amber-700 shadow-2xl group">
+                <Image
+                  src="/profilePic.jpg"
+                  alt="Amaurys De Los Santos Mendez"
+                  layout="fill"
+                  objectFit="cover"
+                  className="grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-amber-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection direction={Direction.RIGHT}>
+            <div className="space-y-8 text-center md:text-left">
+              <div>
+                <h1 className="text-5xl md:text-6xl font-bold mb-4">
+                  Hi, I&apos;m <span className="text-amber-500">Amaurys</span>
+                </h1>
+                <p className="text-2xl text-amber-300 font-medium mb-6">
+                  Web/Java App Developer
+                </p>
+              </div>
+
+              <p className="text-lg text-gray-300 leading-relaxed max-w-xl mx-auto md:mx-0">
+                Computer Science student at Farmingdale State College with a passion for creating innovative
+                software solutions. Skilled in java, mobile and web development, with a strong background in
+                programming languages and modern tech stacks.
+              </p>
+
+              <div className="flex justify-center md:justify-start space-x-4 pt-6">
+                <a
+                  href="#projects"
+                  className="px-6 py-3 bg-amber-600 text-white rounded-full font-semibold hover:bg-amber-500 transition-colors"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="mailto:amaurysdlsm@gmail.com"
+                  className="px-6 py-3 border-2 border-amber-600 text-amber-500 rounded-full font-semibold hover:bg-amber-600 hover:text-white transition-colors"
+                >
+                  Contact Me
+                </a>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-20 bg-amber-900/20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-amber-400 mb-12">My Skills</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {skills.map((skill, index) => (
+              <SkillBadge key={index} skill={skill} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-amber-900/30">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-amber-400 mb-16">Projects</h2>
+
+          <div className="space-y-16">
+            <ProjectItem
+              title="RockSlide (CodeQuest)"
+              description="Android strategy game where players navigate a rock across a compact platform by strategically placing directional arrow pieces."
+              features={[
+                "Interactive rock movement mechanics",
+                "Drag-and-drop directional controls",
+                "Persistent progress tracking",
+                "Strategic puzzle gameplay",
+                "State management with Jetpack Compose"
+              ]}
+              technologies={[
+                "Kotlin",
+                "Jetpack Compose",
+                "Room DB",
+                "SQLite",
+                "Android SDK"
+              ]}
+              direction={Direction.LEFT}
+              githubLink="https://github.com/AmaurysM/CodeQuest"
+            />
+
+            <ProjectItem
+              title="Guessing Game"
+              description="Interactive JavaFX game challenging players to predict whether a displayed shape will be a circle or a square, with animated visual feedback."
+              features={[
+                "Dynamic shape animations",
+                "Color-coded guess feedback",
+                "Persistent guess tracking",
+                "Database-backed game state",
+                "Smooth user interaction"
+              ]}
+              technologies={[
+                "Java",
+                "JavaFX",
+                "JDBC",
+                "Microsoft Access",
+                "Database Management"
+              ]}
+              direction={Direction.RIGHT}
+              githubLink="https://github.com/AmaurysM/GuessingGame"
+            />
+
+            <ProjectItem
+              title="Java Blockchain"
+              description="A comprehensive blockchain implementation demonstrating core cryptocurrency features, including digital signatures, proof of work, and secure wallet transactions."
+              features={[
+                "Blocks with data storage and integrity",
+                "Digital signature chaining",
+                "Proof of Work validation system",
+                "Elliptic-Curve cryptography for wallets",
+                "Secure fund transfer mechanisms",
+                "Transaction verification"
+              ]}
+              technologies={[
+                "Java",
+                "Cryptography",
+                "SHA-256 Hashing",
+                "Elliptic-Curve",
+                "Digital Signatures",
+                "Blockchain Technology"
+              ]}
+              direction={Direction.LEFT}
+              githubLink="https://github.com/AmaurysM/BlockchainConcept"
+            />
+
+            <ProjectItem
+              title="Asteroids Game"
+              description="Classic Asteroids-style arcade game built with p5.js, featuring dynamic gameplay, collision detection, and progressive difficulty."
+              features={[
+                "Responsive player-controlled spaceship",
+                "Procedurally generated asteroids",
+                "Bullet-asteroid collision mechanics",
+                "Score tracking and multiple lives system",
+                "Progressive difficulty scaling"
+              ]}
+              technologies={[
+                "React",
+                "p5.js",
+                "TypeScript",
+                "Game Development",
+                "Interactive Animation"
+              ]}
+              direction={Direction.RIGHT}
+              githubLink="https://github.com/AmaurysM"
+              learnMoreDest="/asteroids"
+            />
+
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 bg-amber-950">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-amber-400 mb-16">
+            Education & Certifications
+          </h2>
+          <div className="space-y-8">
+            <div className="bg-white/5 rounded-xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-amber-500 mb-2">
+                Bachelors of Science - Computer Science
+              </h3>
+              <p className="text-gray-300 text-lg mb-2">
+                Farmingdale State College, New York, USA
+              </p>
+              <p className="text-gray-400">2023 – 2025</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-amber-500 mb-2">
+                Associate of Science - Computer Science
+              </h3>
+              <p className="text-gray-300 text-lg mb-2">
+                Suffolk County Community College, New York, USA
+              </p>
+              <p className="text-gray-400">2021 – 2023</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-amber-500 mb-4">
+                CompTIA Certifications
+              </h3>
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/AplusCertifiedCE.png"
+                    alt="CompTIA A+ Badge"
+                    width={48}
+                    height={48}
+                  />
+                  <span className="text-gray-300 text-lg">CompTIA A+</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/NetworkPlusLogoCertifiedCE.png"
+                    alt="CompTIA Network+ Badge"
+                    width={48}
+                    height={48}
+                  />
+                  <span className="text-gray-300 text-lg">CompTIA Network+</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/SecurityPlusLogoCertifiedCE.png"
+                    alt="CompTIA Security+ Badge"
+                    width={48}
+                    height={48}
+                  />
+                  <span className="text-gray-300 text-lg">CompTIA Security+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-amber-900/20">
+        <div className="max-w-xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-amber-400 mb-8">Let&apos;s Connect</h2>
+          <p className="text-gray-300 text-lg mb-12">
+            Interested in collaborating or discussing innovative tech solutions?
+            Feel free to reach out through any of these platforms.
+          </p>
+          <div className="flex justify-center space-x-6">
+            <a
+              href="mailto:amaurysdlsm@gmail.com"
+              className="text-amber-500 hover:text-amber-400 transition-colors"
+            >
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com/in/amaurys-delossantos-mendez-2a57b1213"
+              className="text-amber-500 hover:text-amber-400 transition-colors"
+            >
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.784 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/AmaurysM"
+              className="text-amber-500 hover:text-amber-400 transition-colors"
+            >
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+          <div className="mt-8 text-gray-400">
+            <p>Email: amaurysdlsm@gmail.com</p>
+            <p>Phone: (631) 276-4906</p>
+            <p>Location: 265 Abrahams Landing Rd</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
