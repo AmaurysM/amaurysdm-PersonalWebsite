@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import p5 from "p5";
 
 const P5Component = () => {
-  const sketchRef = useRef();
+  const sketchRef = useRef(null);
 
   useEffect(() => {
     const sketch = (p) => {
