@@ -14,7 +14,7 @@ const P5Component = () => {
   useEffect(() => {
     if (isClient) {
       const sketch = (p) => {
-        // Define the game state and configuration
+
         const game = {
           canvas: null,
           state: {

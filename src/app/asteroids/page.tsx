@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
-import P5Component from "../components/asteroids";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const P5Component = dynamic(() => import("../components/asteroids"), {
+  ssr: false,
+});
 
 const AsteroidsPage = () => {
-    const router = useRouter();
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
-              <button
+      <button
         onClick={() => router.back()}
         className="absolute top-4 left-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
       >
