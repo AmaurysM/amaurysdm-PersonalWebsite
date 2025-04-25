@@ -46,7 +46,6 @@ const ProjectItem = ({
         </p>
 
         <div className="mb-6">
-          <SectionHeading title="Technologies" />
           <motion.div 
             className="flex flex-wrap gap-2"
             initial="hidden"
@@ -129,8 +128,8 @@ const ProjectItem = ({
               {...(!isInternalLink ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className={`inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors gap-2 ${
                 isInternalLink 
-                  ? 'bg-primary text-white hover:bg-primary-dark' 
-                  : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                  ? 'bg-primary text-primary hover:bg-primary-dark dark:hover:bg-gray-600 hover:bg-gray-200' 
+                  : 'bg-emerald-600 text-white hover:bg-emerald-700 dark:text-primary'
               }`}
             >
               <FaExternalLinkAlt className="w-4 h-4" />

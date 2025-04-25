@@ -71,13 +71,13 @@ const Home = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <a
                 href="#projects"
-                className="px-6 py-3 bg-primary rounded-lg text-white font-medium hover:bg-primary-dark transition-colors"
+                className="px-6 py-3 bg-primary rounded-lg text-primary font-medium hover:bg-gray-200 transition-colors"
               >
                 View Projects
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
+                className="px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:bg-gray-200 transition-colors"
               >
                 Contact Me
               </a>
