@@ -336,52 +336,55 @@ const Home = () => {
 
       {/* Skills Section */}
       <Section id="skills" className="py-20 relative">
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800/50 -z-10 skew-y-3 transform-gpu"></div>
-        <div>
-          <SectionHeading>Technical Expertise</SectionHeading>
+        <>
+          <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800/50 -z-10 skew-y-3 transform-gpu"></div>
+          <div>
+            <SectionHeading>Technical Expertise</SectionHeading>
 
-          <div className="space-y-12 mt-12">
-            {Object.keys(skillCategories).map((category, idx) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="mb-12"
-              >
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="text-primary text-2xl">
-                    {skillIcons[category]}
+            <div className="space-y-12 mt-12">
+              {Object.keys(skillCategories).map((category, idx) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="mb-12"
+                >
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="text-primary text-2xl">
+                      {skillIcons[category]}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+                      {categoryLabels[category]}
+                    </h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                    {categoryLabels[category]}
-                  </h3>
-                </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {skillCategories[category].map((skill, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: getRandomDelay()
-                      }}
-                      viewport={{ once: true }}
-                    >
-                      <Skill
-                        name={skill.name}
-                        level={skill.level}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    {skillCategories[category].map((skill, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: getRandomDelay()
+                        }}
+                        viewport={{ once: true }}
+                      >
+                        <Skill
+                          name={skill.name}
+                          level={skill.level}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
+
       </Section>
 
       {/* Projects Section */}
@@ -397,8 +400,8 @@ const Home = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === tab
-                      ? "bg-primary text-white shadow-md"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    ? "bg-primary text-white shadow-md"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     }`}
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -448,94 +451,95 @@ const Home = () => {
 
       {/* Education Section */}
       <Section id="education" className="py-20 relative">
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800/50 -z-10 -skew-y-3 transform-gpu"></div>
-        <div>
-          <SectionHeading>Education & Certifications</SectionHeading>
+        <>
+          <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800/50 -z-10 -skew-y-3 transform-gpu"></div>
+          <div>
+            <SectionHeading>Education & Certifications</SectionHeading>
 
-          <div className="relative mt-12">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-indigo-500 rounded hidden md:block"></div>
+            <div className="relative mt-12">
+              {/* Timeline line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-indigo-500 rounded hidden md:block"></div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Newest: CompTIA - Left side, top row */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
-                className="md:col-start-1 md:row-start-1 md:mr-8 relative"
-              >
-                <EducationCard
-                  degree="CompTIA Certifications"
-                  institution="CompTIA"
-                  period="2022 – Present"
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Newest: CompTIA - Left side, top row */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true }}
+                  className="md:col-start-1 md:row-start-1 md:mr-8 relative"
                 >
-                  <div className="flex flex-wrap gap-4 mt-4">
-                    <div className="flex items-center space-x-3">
-                      <Image src="/AplusCertifiedCE.png" alt="CompTIA A+ Badge" width={40} height={40} />
-                      <span className="text-gray-700 dark:text-gray-300">CompTIA A+</span>
+                  <EducationCard
+                    degree="CompTIA Certifications"
+                    institution="CompTIA"
+                    period="2022 – Present"
+                  >
+                    <div className="flex flex-wrap gap-4 mt-4">
+                      <div className="flex items-center space-x-3">
+                        <Image src="/AplusCertifiedCE.png" alt="CompTIA A+ Badge" width={40} height={40} />
+                        <span className="text-gray-700 dark:text-gray-300">CompTIA A+</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Image src="/NetworkPlusLogoCertifiedCE.png" alt="CompTIA Network+ Badge" width={40} height={40} />
+                        <span className="text-gray-700 dark:text-gray-300">CompTIA Network+</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Image src="/SecurityPlusLogoCertifiedCE.png" alt="CompTIA Security+ Badge" width={40} height={40} />
+                        <span className="text-gray-700 dark:text-gray-300">CompTIA Security+</span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Image src="/NetworkPlusLogoCertifiedCE.png" alt="CompTIA Network+ Badge" width={40} height={40} />
-                      <span className="text-gray-700 dark:text-gray-300">CompTIA Network+</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Image src="/SecurityPlusLogoCertifiedCE.png" alt="CompTIA Security+ Badge" width={40} height={40} />
-                      <span className="text-gray-700 dark:text-gray-300">CompTIA Security+</span>
-                    </div>
-                  </div>
-                </EducationCard>
-                <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
-              </motion.div>
+                  </EducationCard>
+                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                </motion.div>
 
-              {/* 2nd: Bachelor's - Right side, 2nd row */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="md:col-start-2 md:row-start-2 md:ml-8 relative"
-              >
-                <EducationCard
-                  degree="Bachelors of Science - Computer Science"
-                  institution="Farmingdale State College, New York, USA"
-                  period="2023 – 2025"
-                  gpa="3.8/4.0"
-                  highlights={[
-                    "Dean's List 2023-2024",
-                    "Advanced Algorithms",
-                    "Software Engineering",
-                    "Data Structures"
-                  ]}
-                />
-                <div className="absolute top-10 left-0 transform -translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
-              </motion.div>
+                {/* 2nd: Bachelor's - Right side, 2nd row */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="md:col-start-2 md:row-start-2 md:ml-8 relative"
+                >
+                  <EducationCard
+                    degree="Bachelors of Science - Computer Science"
+                    institution="Farmingdale State College, New York, USA"
+                    period="2023 – 2025"
+                    gpa="3.8/4.0"
+                    highlights={[
+                      "Dean's List 2023-2024",
+                      "Advanced Algorithms",
+                      "Software Engineering",
+                      "Data Structures"
+                    ]}
+                  />
+                  <div className="absolute top-10 left-0 transform -translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                </motion.div>
 
-              {/* 3rd: Associate - Left side, 3rd row */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="md:col-start-1 md:row-start-3 md:mr-8 relative"
-              >
-                <EducationCard
-                  degree="Associate of Science - Computer Science"
-                  institution="Suffolk County Community College, New York, USA"
-                  period="2021 – 2023"
-                  gpa="3.8/4.0"
-                  highlights={[
-                    "President's List 2022",
-                    "Introduction to Programming",
-                    "Computer Architecture"
-                  ]}
-                />
-                <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
-              </motion.div>
+                {/* 3rd: Associate - Left side, 3rd row */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="md:col-start-1 md:row-start-3 md:mr-8 relative"
+                >
+                  <EducationCard
+                    degree="Associate of Science - Computer Science"
+                    institution="Suffolk County Community College, New York, USA"
+                    period="2021 – 2023"
+                    gpa="3.8/4.0"
+                    highlights={[
+                      "President's List 2022",
+                      "Introduction to Programming",
+                      "Computer Architecture"
+                    ]}
+                  />
+                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                </motion.div>
+              </div>
             </div>
           </div>
-
-        </div>
+        </>
       </Section>
 
       {/* Contact Section */}
@@ -631,7 +635,7 @@ const Home = () => {
             >
               <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-600">Ready to collaborate?</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
               <motion.a
                 whileHover={{ scale: 1.05 }}
