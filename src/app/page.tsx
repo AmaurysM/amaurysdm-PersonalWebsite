@@ -12,7 +12,6 @@ import {
   FaCode,
   FaLaptopCode,
   FaServer,
-  FaMobileAlt,
   FaDatabase
 } from "react-icons/fa";
 import ProjectItem from "./components/ProjectItem";
