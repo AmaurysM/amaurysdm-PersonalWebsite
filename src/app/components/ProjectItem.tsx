@@ -13,6 +13,8 @@ interface ProjectItemProps {
   githubLink?: string;
   otherLink?: string;
   isInternalLink?: boolean;
+  image?: string;
+  category?: string;
 }
 
 const ProjectItem = ({ 
@@ -22,7 +24,9 @@ const ProjectItem = ({
   features, 
   githubLink, 
   otherLink,
-  isInternalLink = false 
+  isInternalLink = false,
+  image,
+  category,
 }: ProjectItemProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
