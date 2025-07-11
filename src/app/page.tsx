@@ -269,7 +269,7 @@ const Home = () => {
             >
               <div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-600 dark:from-primary dark:to-indigo-400">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-primary dark:to-indigo-400">
                     Amaurys
                   </span>
                   <br />
@@ -289,7 +289,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#projects"
-                  className="px-8 py-3 bg-gradient-to-r from-primary to-indigo-600 rounded-lg text-white font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+                  className="px-8 py-3 bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg text-white font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
                 >
                   <FaLaptopCode className="mr-2" /> View Projects
                 </motion.a>
@@ -399,7 +399,7 @@ const Home = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === tab
-                    ? "bg-primary text-white shadow-md"
+                    ? "bg-primary text-blue-400 shadow-md"
                     : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     }`}
                 >
@@ -437,7 +437,7 @@ const Home = () => {
                   />
 
                   {project.featured && (
-                    <div className="absolute -top-3 -right-3 bg-gradient-to-r from-primary to-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+                    <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-400 to-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
                       Featured
                     </div>
                   )}
@@ -632,7 +632,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-center mt-16 p-8 bg-white dark:bg-gray-800 rounded-xl shadow-xl"
             >
-              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-600">Ready to collaborate?</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600">Ready to collaborate?</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
@@ -640,7 +640,7 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:amaurysdlsm@gmail.com"
-                className="inline-block px-8 py-3 bg-gradient-to-r from-primary to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-block px-8 py-3 bg-gradient-to-r from-blue-400 to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Start a Conversation
               </motion.a>
@@ -657,7 +657,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-600 transition-colors z-50"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-blue-400 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-600 transition-colors z-50"
             aria-label="Scroll to top"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

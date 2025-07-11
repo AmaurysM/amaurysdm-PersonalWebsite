@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -11,20 +12,20 @@ const Navigation = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
-                        <a href="#" className="text-xl font-bold text-gray-900 dark:text-white">
+                        <Link href="#" className="text-xl font-bold text-gray-900 dark:text-white">
                             <span className="text-primary">A</span>maurys
-                        </a>
+                        </Link>
                     </div>
 
                     <nav className="hidden md:flex items-center space-x-8">
                         {['About', 'Skills', 'Projects', 'Education', 'Contact'].map((item) => (
-                            <a
+                            <Link
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
                                 className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 text-sm font-medium transition-colors"
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
 
@@ -46,14 +47,14 @@ const Navigation = () => {
                 <div className="md:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 shadow-md">
                         {['About', 'Skills', 'Projects', 'Education', 'Contact'].map((item) => (
-                            <a
+                            <Link
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
                                 className="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>
