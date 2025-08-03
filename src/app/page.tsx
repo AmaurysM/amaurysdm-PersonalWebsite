@@ -238,37 +238,17 @@ const Home = () => {
           <div className="absolute top-0 -left-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl dark:bg-primary/5 -z-10"></div>
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl dark:bg-indigo-500/5 -z-10"></div>
 
-          <div className="grid md:grid-cols-5 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, type: "spring" }}
-              className="md:col-span-2 flex justify-center relative"
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
-                <Image
-                  src="/profilePicture.png"
-                  alt="Amaurys De Los Santos Mendez"
-                  fill
-                  priority
-                  style={{ objectFit: 'cover' }}
-                  className="transition-all duration-500 hover:scale-105"
-                />
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary/20 rounded-full dark:bg-primary/10 z-[-1]"></div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-indigo-500/20 rounded-full dark:bg-indigo-500/10 z-[-1]"></div>
-            </motion.div>
+          <div>
+            
 
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="md:col-span-3 space-y-8"
+              className="w-full  space-y-8"
             >
               <div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
+                <h1 className="w-full text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-primary dark:to-indigo-400">
                     Amaurys
                   </span>
@@ -281,7 +261,7 @@ const Home = () => {
               </div>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                I create elegant, efficient, and user-centric software solutions. Currently pursuing my Computer Science degree at Farmingdale State College, I specialize in building robust web applications and mobile experiences that combine technical excellence with intuitive design.
+                I create elegant, efficient, and user-centric software solutions. I specialize in building robust web applications and mobile experiences that combine technical excellence with intuitive design.
               </p>
 
               <div className="flex flex-wrap gap-5 pt-6">
