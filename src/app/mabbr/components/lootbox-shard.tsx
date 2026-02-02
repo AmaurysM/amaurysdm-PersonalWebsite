@@ -63,19 +63,17 @@ export function LootboxPreview() {
 
   return (
     <div className="w-full h-full bg-background overflow-hidden">
-      {/* Header */}
       <div className="bg-linear-to-r bg-[#171e29] border-b border-gray-500 p-4">
         <h3 className="text-lg font-bold text-foreground">Market Lootboxes</h3>
         <p className="text-xs text-muted-foreground">Select a case to reveal potential stocks</p>
       </div>
 
-      {/* Lootbox Grid */}
       <div className="p-6 bg-[#1F2937]">
         <div className="grid grid-cols-2 gap-3 mb-6">
           {mockLootboxes.map((box) => {
             const tokenCost = Math.ceil(box.price / 2);
             return (
-              <button
+              <div
                 key={box.id}
                 onClick={() => setSelectedBox(box)}
                 className={`relative group rounded-md overflow-hidden shadow-md border-2 transition-all duration-300 hover:scale-105 cursor-pointer bg-gray-800 ${
@@ -84,15 +82,12 @@ export function LootboxPreview() {
                     : box.borderColor
                 }`}
               >
-                {/* For Sale Badge */}
                 <div className="absolute top-2 left-2 text-[8px] font-bold uppercase bg-yellow-500 text-black px-1.5 py-0.5 rounded z-10">
                   Sale
                 </div>
 
-                {/* Top handle/lid */}
                 <div className={`h-3 w-16 mx-auto rounded-b-md border-b-2 border-l-2 border-r-2 ${box.borderColor}`}></div>
                 
-                {/* Case header with icon and name */}
                 <div className={`px-3 py-2 ${box.accentBg} flex items-center justify-between border-b-2 ${box.borderColor}`}>
                   <div className="flex items-center space-x-1.5">
                     {box.icon}
@@ -107,26 +102,21 @@ export function LootboxPreview() {
                   </div>
                 </div>
                 
-                {/* Main box content */}
                 <div className="p-2.5">
                   <p className="text-[10px] text-gray-300 font-medium mb-2 truncate">{box.name}</p>
                   
-                  {/* Buy Now button */}
-                  <button
+                  <div
                     className={`w-full py-1.5 rounded text-white font-bold text-[10px] uppercase ${box.buttonColor}`}
                   >
                     Buy ({tokenCost})
-                  </button>
+                  </div>
                 </div>
 
-                {/* Hover glow */}
-                <div className={`absolute inset-0 bg-linear-to-br ${box.color} opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none`} />
-              </button>
+              </div>
             );
           })}
         </div>
 
-        {/* Selected Box Details */}
         <div className={`rounded-lg border-2 ${selectedBox.borderColor} bg-[#171e29] p-4 transition-all duration-300 `}>
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
@@ -138,7 +128,6 @@ export function LootboxPreview() {
             </div>
           </div>
 
-          {/* Stock list */}
           <div className="space-y-2 mb-4">
             <p className="text-xs text-muted-foreground font-medium">Potential Drops:</p>
             <div className="grid grid-cols-3 gap-2">
@@ -156,12 +145,11 @@ export function LootboxPreview() {
             </div>
           </div>
 
-          {/* Purchase button */}
-          <button 
+          <div 
             className={`w-full py-2 rounded-lg bg-linear-to-r ${selectedBox.color} text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg`}
           >
             Open for {Math.ceil(selectedBox.price / 2)} tokens
-          </button>
+          </div>
         </div>
       </div>
 

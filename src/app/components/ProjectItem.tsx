@@ -36,7 +36,7 @@ const ProjectItem = ({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
+      className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
     >
       <div
         className={`p-6 md:p-8 ${showcaseLink

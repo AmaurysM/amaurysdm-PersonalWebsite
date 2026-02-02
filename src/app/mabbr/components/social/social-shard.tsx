@@ -74,7 +74,7 @@ export default function SocialShard() {
   };
 
   return (
-    <div className="h-full w-full overflow-hidden">
+    <div className="h-full w-full">
       <Virtuoso
         ref={virtuosoRef}
         style={{ height: "100%" }}

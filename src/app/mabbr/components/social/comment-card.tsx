@@ -89,9 +89,8 @@ export default function DiscordCommentCard({
 
   return (
     <div
-      className={`relative flex ${
-        groupedWithPrevious ? "mt-0.5 pt-0" : "mt-3 pt-1"
-      }`}
+      className={`relative flex ${groupedWithPrevious ? "mt-0.5 pt-0" : "mt-3 pt-1"
+        }`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -148,67 +147,69 @@ export default function DiscordCommentCard({
         {reactions.length > 0 && (
           <div className="flex gap-1 mt-2">
             {reactions.map((r) => (
-              <button
+              <div
                 key={r.emoji}
                 className="px-2 py-0.5 rounded-full text-xs bg-gray-800 border border-gray-700 hover:bg-gray-700"
               >
                 {r.emoji} {r.count}
-              </button>
+              </div>
             ))}
           </div>
         )}
 
         {/* Hover Actions */}
         <div
-          className={`absolute right-0 top-0 flex gap-1 ${
-            isHovering ? "opacity-100" : "opacity-0"
-          } transition-opacity`}
+          className={`absolute right-0 top-0 flex gap-1 z-10 ${isHovering ? "opacity-100" : "opacity-0"
+            } transition-opacity`}
         >
-          <button
-            onClick={() => setShowReactionPicker(!showReactionPicker)}
-            className="p-1.5 rounded-full hover:bg-gray-700 text-gray-400"
-          >
-            <PlusCircle size={16} />
-          </button>
+          <div className="relative">
+            <div
+              onClick={() => setShowReactionPicker(!showReactionPicker)}
+              className="p-1.5 rounded-full hover:bg-gray-700 text-gray-400"
+            >
+              <PlusCircle size={16} />
+            </div>
+
+            {/* Reaction Picker */}
+            {showReactionPicker && (
+              <div
+                ref={reactionPickerRef}
+                className="absolute top-full right-0 mt-1 p-2 bg-gray-800 border border-gray-700 rounded shadow-lg flex gap-1 z-50"
+              >
+                {COMMON_REACTIONS.map((emoji) => (
+                  <div
+                    key={emoji}
+                    onClick={() => toggleReaction(emoji)}
+                    className="text-lg hover:bg-gray-700 rounded px-1 cursor-pointer"
+                  >
+                    {emoji}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div ref={optionsMenuRef} className="relative">
-            <button
+            <div
               onClick={() => setShowOptions(!showOptions)}
               className="p-1.5 rounded-full hover:bg-gray-700 text-gray-400"
             >
               <MoreHorizontal size={16} />
-            </button>
+            </div>
 
             {showOptions && (
-              <div className="absolute right-0 mt-1 w-32 bg-gray-800 border border-gray-700 rounded shadow-lg">
-                <button className="w-full px-3 py-2 text-sm text-red-400 hover:bg-gray-700 flex gap-2">
+              <div className="absolute right-0 mt-1 w-32 bg-gray-800 border border-gray-700 rounded shadow-lg z-50">
+                <div className="w-full px-3 py-2 text-sm text-red-400 hover:bg-gray-700 flex gap-2">
                   <Trash size={14} /> Delete
-                </button>
-                <button className="w-full px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 flex gap-2">
+                </div>
+                <div className="w-full px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 flex gap-2">
                   <Share size={14} /> Share
-                </button>
+                </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Reaction Picker */}
-        {showReactionPicker && (
-          <div
-            ref={reactionPickerRef}
-            className="absolute top-full left-0 mt-1 p-2 bg-gray-800 border border-gray-700 rounded shadow-lg flex gap-1"
-          >
-            {COMMON_REACTIONS.map((emoji) => (
-              <button
-                key={emoji}
-                onClick={() => toggleReaction(emoji)}
-                className="text-lg hover:bg-gray-700 rounded px-1"
-              >
-                {emoji}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

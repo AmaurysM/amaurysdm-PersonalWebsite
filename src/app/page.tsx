@@ -230,19 +230,14 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-linear-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
       <Navigation />
 
       {/* Hero Section */}
       <Section id="about" className="pt-36 pb-24 overflow-hidden">
         <div className="relative">
-          {/* Abstract background shapes */}
-          <div className="absolute top-0 -left-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl dark:bg-primary/5 -z-10"></div>
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl dark:bg-indigo-500/5 -z-10"></div>
 
           <div>
-            
-
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -251,7 +246,7 @@ const Home = () => {
             >
               <div>
                 <h1 className="w-full text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-primary dark:to-indigo-400">
+                  <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-500 to-indigo-600 dark:from-primary dark:to-indigo-400">
                     Amaurys
                   </span>
                   <br />
@@ -271,7 +266,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#projects"
-                  className="px-8 py-3 bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg text-white font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+                  className="px-8 py-3 bg-linear-to-r from-blue-400 to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2 rounded-xs"
                 >
                   <FaLaptopCode className="mr-2" /> View Projects
                 </motion.a>
@@ -279,7 +274,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#contact"
-                  className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary/10 dark:hover:bg-primary/5 transition-all duration-300 flex items-center"
+                  className="px-8 py-3 border-2 border-primary text-primary font-medium hover:bg-primary/10 dark:hover:bg-primary/5 transition-all duration-300 flex items-center rounded-xs"
                 >
                   <FaEnvelope className="mr-2" /> Contact Me
                 </motion.a>
@@ -289,7 +284,7 @@ const Home = () => {
                   href="https://github.com/AmaurysM"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-gray-800 dark:bg-gray-700 rounded-lg text-white font-medium hover:bg-gray-700 dark:hover:bg-gray-600 hover:shadow-lg transition-all duration-300 flex items-center"
+                  className="px-8 py-3 bg-gray-800 dark:bg-gray-700 text-white font-medium hover:bg-gray-700 dark:hover:bg-gray-600 hover:shadow-lg transition-all duration-300 flex items-center rounded-xs"
                 >
                   <FaGithub className="mr-2" /> GitHub
                 </motion.a>
@@ -375,12 +370,12 @@ const Home = () => {
 
           {/* Project filters */}
           <div className="flex justify-center mb-12">
-            <div className="flex flex-wrap gap-2 bg-white dark:bg-gray-800 p-2 rounded-xl shadow-md">
+            <div className="flex flex-wrap gap-2 bg-white dark:bg-gray-800 p-2 shadow-md">
               {["all", "featured", "web", "mobile", "desktop", "backend"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === tab
+                  className={`px-5 py-2 font-medium transition-all duration-300 ${activeTab === tab
                     ? "bg-primary text-blue-400 shadow-md"
                     : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     }`}
@@ -421,7 +416,7 @@ const Home = () => {
                   />
 
                   {project.featured && (
-                    <div className="absolute -top-3 -right-3 bg-linear-to-r from-blue-400 to-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+                    <div className="absolute -top-3 -right-3 bg-linear-to-r from-blue-400 to-indigo-600 text-white text-xs px-3 py-1 shadow-lg">
                       Featured
                     </div>
                   )}
@@ -441,7 +436,7 @@ const Home = () => {
 
             <div className="relative mt-12">
               {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-indigo-500 rounded hidden md:block"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-linear-to-b from-primary to-indigo-500 hidden md:block"></div>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Newest: CompTIA - Left side, top row */}
@@ -472,7 +467,7 @@ const Home = () => {
                       </div>
                     </div>
                   </EducationCard>
-                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 border-4 border-white dark:border-gray-800 hidden md:block"></div>
                 </motion.div>
 
                 {/* 2nd: Bachelor's - Right side, 2nd row */}
@@ -495,7 +490,7 @@ const Home = () => {
                       "Data Structures"
                     ]}
                   />
-                  <div className="absolute top-10 left-0 transform -translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                  <div className="absolute top-10 left-0 transform -translate-x-1/2 w-5 h-5 bg-indigo-500 border-4 border-white dark:border-gray-800 hidden md:block"></div>
                 </motion.div>
 
                 {/* 3rd: Associate - Left side, 3rd row */}
@@ -517,7 +512,7 @@ const Home = () => {
                       "Computer Architecture"
                     ]}
                   />
-                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-800 hidden md:block"></div>
+                  <div className="absolute top-10 right-0 transform translate-x-1/2 w-5 h-5 bg-indigo-500 border-4 border-white dark:border-gray-800 hidden md:block"></div>
                 </motion.div>
               </div>
             </div>
@@ -614,9 +609,9 @@ const Home = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
-              className="text-center mt-16 p-8 bg-white dark:bg-gray-800 rounded-xl shadow-xl"
+              className="text-center mt-16 p-8 bg-white dark:bg-gray-800 shadow-xl"
             >
-              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600">Ready to collaborate?</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-indigo-600">Ready to collaborate?</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
@@ -624,7 +619,7 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:amaurysdlsm@gmail.com"
-                className="inline-block px-8 py-3 bg-gradient-to-r from-blue-400 to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-block px-8 py-3 bg-linear-to-r from-blue-400 to-indigo-600 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xs"
               >
                 Start a Conversation
               </motion.a>
@@ -641,7 +636,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-blue-400 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-600 transition-colors z-50"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-blue-400 text-white flex items-center justify-center shadow-lg hover:bg-indigo-600 transition-colors z-50 rounded-full"
             aria-label="Scroll to top"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
