@@ -23,6 +23,7 @@ import Navigation from "./components/Navigation";
 import SectionHeading from "./components/SectionHeading";
 import Skill from "./components/Skill";
 import Footer from "./components/Footer";
+import { Project } from "./types/project";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -95,7 +96,7 @@ const Home = () => {
   };
 
   // Project data
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Stock Trading Platform",
       description: "A simulated stock trading web application where users buy, sell, and trade stocks using virtual currency.",
@@ -116,6 +117,7 @@ const Home = () => {
       ],
       githubLink: "https://github.com/AmaurysM/mabbr-senior-project",
       otherLink: "https://www.mabbr.net",
+      showcaseLink: "/mabbr",
       category: "web",
       featured: true,
       image: "/project-stock.jpg"
@@ -405,19 +407,21 @@ const Home = () => {
                   className="relative"
                 >
                   <ProjectItem
-                    title={project.title}
-                    description={project.description}
-                    features={project.features}
-                    technologies={project.technologies}
-                    githubLink={project.githubLink}
-                    otherLink={project.otherLink}
-                    isInternalLink={project.isInternalLink}
-                    image={project.image}
-                    category={project.category}
+
+                    project={project}
+                    // title={project.title}
+                    // description={project.description}
+                    // features={project.features}
+                    // technologies={project.technologies}
+                    // githubLink={project.githubLink}
+                    // otherLink={project.otherLink}
+                    // isInternalLink={project.isInternalLink}
+                    // image={project.image}
+                    // category={project.category}
                   />
 
                   {project.featured && (
-                    <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-400 to-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+                    <div className="absolute -top-3 -right-3 bg-linear-to-r from-blue-400 to-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
                       Featured
                     </div>
                   )}

@@ -4,33 +4,31 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa';
 import Link from 'next/link';
+import { Project } from '../types/project';
+import { useRouter } from 'next/navigation';
 
-interface ProjectItemProps {
-  title: string;
-  description: string;
-  technologies: string[];
-  features: string[];
-  githubLink?: string;
-  otherLink?: string;
-  isInternalLink?: boolean;
-  image?: string;
-  category?: string;
-}
+const ProjectItem = ({
+  project
+}: { project: Project }) => {
 
-const ProjectItem = ({ 
-  title, 
-  description, 
-  technologies, 
-  features, 
-  githubLink, 
-  otherLink,
-  isInternalLink = false,
-  image,
-  category,
-}: ProjectItemProps) => {
+  const {
+    title,
+    description,
+    technologies,
+    features,
+    githubLink,
+    showcaseLink,
+    otherLink,
+    isInternalLink = false,
+    featured,
+    image,
+    category,
+  } = project;
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const LinkComponent = isInternalLink ? Link : 'a';
+  const router = useRouter();
 
   return (
     <motion.article
@@ -40,17 +38,34 @@ const ProjectItem = ({
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
     >
-      <div className="p-6 md:p-8">
-        <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+      <div
+        className={`p-6 md:p-8 ${showcaseLink
+          ? 'cursor-pointer hover:bg-zinc-800 transition'
+          : ''
+          }`}
+        onClick={() => {
+          if (showcaseLink) {
+            router.push(showcaseLink);
+          }
+        }}
+        role={showcaseLink ? 'link' : undefined}
+        tabIndex={showcaseLink ? 0 : -1}
+        onKeyDown={(e) => {
+          if (!showcaseLink) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            router.push(showcaseLink);
+          }
+        }}
+      >        <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-4">
           {title}
         </h3>
-        
+
         <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
           {description}
         </p>
 
         <div className="mb-6">
-          <motion.div 
+          <motion.div
             className="flex flex-wrap gap-2"
             initial="hidden"
             animate="visible"
@@ -83,7 +98,7 @@ const ProjectItem = ({
               animate={{ rotate: isExpanded ? 180 : 0 }}
               className="ml-2 w-5 h-5 inline-flex items-center justify-center"
             >
-              <FaChevronDown/>
+              <FaChevronDown />
             </motion.span>
           </button>
 
@@ -99,7 +114,7 @@ const ProjectItem = ({
                 <SectionHeading title="Key Features" />
                 <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-2">
                   {features.map((feature, i) => (
-                    <motion.li 
+                    <motion.li
                       key={i}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -130,11 +145,10 @@ const ProjectItem = ({
             <LinkComponent
               href={otherLink}
               {...(!isInternalLink ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className={`inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors gap-2 ${
-                isInternalLink 
-                  ? 'bg-primary text-primary hover:bg-primary-dark dark:hover:bg-gray-600 hover:bg-gray-200' 
-                  : 'bg-emerald-600 text-white hover:bg-emerald-700 dark:text-primary'
-              }`}
+              className={`inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors gap-2 ${isInternalLink
+                ? 'bg-primary text-primary hover:bg-primary-dark dark:hover:bg-gray-600 hover:bg-gray-200'
+                : 'bg-emerald-600 text-white hover:bg-emerald-700 dark:text-primary'
+                }`}
             >
               <FaExternalLinkAlt className="w-4 h-4" />
               {isInternalLink ? 'View Project' : 'Live Demo'}
