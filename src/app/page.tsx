@@ -149,6 +149,33 @@ const Home = () => {
       category: "web",
       featured: true,
       image: "/voronoi-logo.svg"
+    }, 
+    {
+      title: "Line Trainer",
+      description: "Comprehensive training management system for National Air Transportation Association, enabling organizations to track certifications, manage modules, and facilitate digital sign-offs.",
+      features: [
+        "Multi-organization architecture with isolated training environments",
+        "Role-based access control (Students, Trainers, Coordinators)",
+        "Hierarchical module structure with version tracking",
+        "Digital signature system for compliance verification",
+        "Email invitation workflow with Resend integration",
+        "Progress tracking with real-time analytics dashboard",
+        "User lifecycle management with archiving and soft deletion"
+      ],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "MongoDB",
+        "NextAuth",
+        "Zod",
+        "Resend",
+        "Tailwind CSS"
+      ],
+      githubLink: "https://github.com/AmaurysM/nata-trainer",
+      showcaseLink: "/nata-trainer",
+      category: "web",
+      featured: true,
+      image: "/linetrainer-logo.svg"
     },
     {
       title: "RockSlide (CodeQuest)",
