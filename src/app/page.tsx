@@ -96,31 +96,7 @@ const Home = () => {
   };
 
   const projects: Project[] = [
-    {
-      title: "Stock Trading Platform",
-      description: "A simulated stock trading web application where users buy, sell, and trade stocks using virtual currency.",
-      features: [
-        "Server-side rendering with Next.js",
-        "Responsive design using Tailwind CSS",
-        "Robust data handling with MongoDB & Prisma",
-        "Secure authentication with BetterAuth",
-        "Integrated social features including posts and comments"
-      ],
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "MongoDB",
-        "Prisma",
-        "BetterAuth"
-      ],
-      githubLink: "https://github.com/AmaurysM/mabbr-senior-project",
-      otherLink: "https://www.mabbr.net",
-      showcaseLink: "/mabbr",
-      category: "web",
-      featured: true,
-      image: "/mabbr-logo.ico"
-    },
+
     {
       title: "Voronoi",
       description:
@@ -149,7 +125,7 @@ const Home = () => {
       category: "web",
       featured: true,
       image: "/voronoi-logo.svg"
-    }, 
+    },
     {
       title: "Line Trainer",
       description: "Comprehensive training management system for National Air Transportation Association, enabling organizations to track certifications, manage modules, and facilitate digital sign-offs.",
@@ -176,6 +152,58 @@ const Home = () => {
       category: "web",
       featured: true,
       image: "/linetrainer-logo.svg"
+    },
+    {
+      title: "Line Tracker",
+      description:
+        "Single-page operational web app for tracking aircraft ground services in real time, built specifically for airport ramp and line service teams.",
+      features: [
+        "Real-time aircraft ground service tracking",
+        "Single-page ramp board with no navigation",
+        "Card and high-density list view modes",
+        "Independent service completion tracking",
+        "Arrival and departure time logging",
+        "Service-type filtering and tail number search",
+        "Soft deletion with full lifecycle timestamps",
+        "Designed around real ramp workflows"
+      ],
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      githubLink: "https://github.com/AmaurysM/line-tracker",
+      showcaseLink: "/line-tracker",
+      category: "web",
+      featured: true,
+      //image: "/linetracker-logo.svg"
+    }
+    ,
+    {
+      title: "Stock Trading Platform",
+      description: "A simulated stock trading web application where users buy, sell, and trade stocks using virtual currency.",
+      features: [
+        "Server-side rendering with Next.js",
+        "Responsive design using Tailwind CSS",
+        "Robust data handling with MongoDB & Prisma",
+        "Secure authentication with BetterAuth",
+        "Integrated social features including posts and comments"
+      ],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB",
+        "Prisma",
+        "BetterAuth"
+      ],
+      githubLink: "https://github.com/AmaurysM/mabbr-senior-project",
+      otherLink: "https://www.mabbr.net",
+      showcaseLink: "/mabbr",
+      category: "web",
+      featured: true,
+      image: "/mabbr-logo.ico"
     },
     {
       title: "RockSlide (CodeQuest)",
