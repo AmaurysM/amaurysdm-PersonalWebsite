@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "d3-delaunay": "^6.0.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.6.0",
     "lucide-react": "^0.563.0",
