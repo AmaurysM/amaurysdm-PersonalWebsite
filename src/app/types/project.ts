@@ -11,5 +11,5 @@ export type Project = {
   showcaseLink?: string;
   category: ProjectCategory;
   featured?: boolean;
-  image: string;
+  image?: string;
 };

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react";
 import Bubble from "./components/Bubble";
 import { HeroShard } from "./components/hero-shard";
 import { LootboxPreview } from "./components/lootbox-shard";
@@ -9,15 +10,43 @@ import { useRouter } from "next/navigation";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function MABBR() {
+
     const router = useRouter();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [scale, setScale] = useState(0.5);
+
+    useEffect(() => {
+        const updateScale = () => {
+            if (containerRef.current) {
+                const containerWidth = containerRef.current.offsetWidth;
+                const iframeWidth = 1440;
+                const calculatedScale = containerWidth / iframeWidth;
+                setScale(calculatedScale);
+            }
+        };
+
+        updateScale();
+        window.addEventListener('resize', updateScale);
+        return () => window.removeEventListener('resize', updateScale);
+    }, []);
+
+    const iframeWidth = 1440;
+    const iframeHeight = 900;
+    const scaledHeight = iframeHeight * scale;
 
     return (
-        <main className="relative bg-slate-950 text-slate-100 overflow-hidden">
+        <main className="relative bg-slate-950/60 text-slate-100 overflow-hidden">
+
+            <div className="fixed inset-0 -z-10">
+                <Bubble />
+            </div>
+
             <div
-                onClick={() => (window.location.href = "https://www.amaurysdelossantos.com")}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700/70 transition cursor-pointer"
+                className="flex items-center text-sm font-medium text-slate-200 bg-slate-800/50 border border-slate-700/50 "
             >
-                Return
+                <div onClick={() => (window.location.href = "https://www.amaurysdelossantos.com")}
+                    className="flex-1 px-4 py-2 hover:bg-slate-700/70 transition cursor-pointer">Return</div>
+                <div className="px-4">MABBR</div>
             </div>
 
             <section className="relative py-24 min-h-[90vh] flex items-center">
@@ -52,9 +81,30 @@ export default function MABBR() {
                         </div>
                     </div>
 
-                    <div className="relative">
-                        <div className="relative border border-white/10 bg-slate-900/50 backdrop-blur-sm shadow-2xl overflow-hidden h-100">
-                            <HeroShard />
+                    {/* Responsive iframe container */}
+                    <div ref={containerRef} className="relative w-full">
+                        <div
+                            className="relative border border-white/10 bg-slate-900/50 backdrop-blur-sm shadow-2xl overflow-hidden rounded-xs"
+                            style={{ height: `${scaledHeight}px` }}
+                        >
+                            <div
+                                className="absolute top-0 left-0 pointer-events-none"
+                                style={{
+                                    width: `${iframeWidth}px`,
+                                    height: `${iframeHeight}px`,
+                                    transform: `scale(${scale})`,
+                                    transformOrigin: 'top left'
+                                }}
+                            >
+                                <iframe
+                                    src="https://www.mabbr.net"
+                                    className="w-full h-full border-none"
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer"
+                                    sandbox="allow-scripts allow-same-origin"
+                                    title="MABBR Platform Preview"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

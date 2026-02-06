@@ -95,7 +95,6 @@ const Home = () => {
     database: "Database Technologies"
   };
 
-  // Project data
   const projects: Project[] = [
     {
       title: "Stock Trading Platform",
@@ -120,7 +119,36 @@ const Home = () => {
       showcaseLink: "/mabbr",
       category: "web",
       featured: true,
-      image: "/project-stock.jpg"
+      image: "/mabbr-logo.ico"
+    },
+    {
+      title: "Voronoi",
+      description:
+        "A modern developer knowledge management web app for organizing libraries, folders, and code snippets in a fast, scalable interface.",
+      features: [
+        "OAuth authentication with GitHub and Google",
+        "Library, folder, and snippet organization",
+        "Scalable nested data structures",
+        "Global state management with Zustand",
+        "Optimistic UI updates with minimal re-renders",
+        "Polished loading, empty, and error states"
+      ],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "NextAuth",
+        "Supabase",
+        "PostgreSQL",
+        "Zustand",
+        "Tailwind CSS",
+        "DaisyUI"
+      ],
+      githubLink: "https://github.com/AmaurysM/fractal",
+      otherLink: "https://www.voronoi.space",
+      showcaseLink: "/voronoi",
+      category: "web",
+      featured: true,
+      image: "/voronoi-logo.svg"
     },
     {
       title: "RockSlide (CodeQuest)",
@@ -141,9 +169,10 @@ const Home = () => {
       ],
       githubLink: "https://github.com/AmaurysM/CodeQuest",
       category: "mobile",
-      featured: true,
-      image: "/project-rockslide.jpg"
+      featured: false,
+      //image: "/project-rockslide.jpg"
     },
+
     {
       title: "Guessing Game",
       description: "Interactive JavaFX game challenging players to predict whether a displayed shape will be a circle or a square, with animated visual feedback.",
@@ -163,7 +192,7 @@ const Home = () => {
       ],
       githubLink: "https://github.com/AmaurysM/GuessingGame",
       category: "desktop",
-      image: "/project-guessing.jpg"
+      //image: "/project-guessing.jpg"
     },
     {
       title: "Java Blockchain",
@@ -186,7 +215,7 @@ const Home = () => {
       githubLink: "https://github.com/AmaurysM/BlockchainConcept",
       category: "backend",
       featured: true,
-      image: "/project-blockchain.jpg"
+      //image: "/project-blockchain.jpg"
     },
     {
       title: "Asteroids Game",
@@ -208,7 +237,7 @@ const Home = () => {
       otherLink: "/asteroids",
       isInternalLink: true,
       category: "web",
-      image: "/project-asteroids.jpg"
+      //image: "/project-asteroids.jpg"
     }
   ];
 
@@ -216,7 +245,6 @@ const Home = () => {
     ? projects
     : projects.filter(project => project.category === activeTab || (activeTab === "featured" && project.featured));
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -224,7 +252,6 @@ const Home = () => {
     });
   };
 
-  // Generate random animation delay
   const getRandomDelay = () => {
     return Math.random() * 0.5;
   };
@@ -404,15 +431,15 @@ const Home = () => {
                   <ProjectItem
 
                     project={project}
-                    // title={project.title}
-                    // description={project.description}
-                    // features={project.features}
-                    // technologies={project.technologies}
-                    // githubLink={project.githubLink}
-                    // otherLink={project.otherLink}
-                    // isInternalLink={project.isInternalLink}
-                    // image={project.image}
-                    // category={project.category}
+                  // title={project.title}
+                  // description={project.description}
+                  // features={project.features}
+                  // technologies={project.technologies}
+                  // githubLink={project.githubLink}
+                  // otherLink={project.otherLink}
+                  // isInternalLink={project.isInternalLink}
+                  // image={project.image}
+                  // category={project.category}
                   />
 
                   {project.featured && (
