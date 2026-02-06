@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@react-spring/web": "^10.0.3",
     "d3-delaunay": "^6.0.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.6.0",

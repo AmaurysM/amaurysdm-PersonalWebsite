@@ -58,11 +58,11 @@ const ProjectItem = ({ project }: { project: Project }) => {
                 {title}
               </h3>
 
-              {featured && (
+              {/* {featured && (
                 <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/15 text-primary">
                   Featured
                 </span>
-              )}
+              )} */}
             </div>
 
             {category && (
