@@ -161,7 +161,7 @@ export default function LineTrackerLanding() {
                         </div>
 
                         {/* Completed Item Example */}
-                        <div className="bg-white cursor-pointer border-l-2 border-l-green-500 bg-green-50/30 hover:bg-gray-50 transition-colors">
+                        <div className="cursor-pointer border-l-2 border-l-green-500 bg-green-50/30 hover:bg-gray-50 transition-colors">
                             <div className="flex items-center">
                                 <div className="shrink-0 w-20 pl-3">
                                     <div className="font-mono font-bold text-slate-900 text-sm tracking-wide">N789EF</div>

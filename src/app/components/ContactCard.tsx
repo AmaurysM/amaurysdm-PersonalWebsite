@@ -22,7 +22,7 @@ const CardContent = ({ icon, title, content }: Omit<ContactCardProps, 'href'>) =
         <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 text-center">
             {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-center break-words max-w-full">
+        <p className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-center wrap-break-word max-w-full">
             {content}
         </p>
     </motion.div>

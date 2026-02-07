@@ -172,7 +172,7 @@ export default function Voronoi() {
                     <div className="relative">
                         <div className="relative border border-slate-700/50 bg-slate-900/50 backdrop-blur-sm shadow-xl overflow-hidden">
                             {/* Mock Voronoi Sidebar */}
-                            <div className="h-[500px] flex bg-[#1e1e1e] text-[#cccccc]">
+                            <div className="h-125 flex bg-[#1e1e1e] text-[#cccccc]">
                                 {/* Activity Bar */}
                                 <div className="w-12 bg-[#333333] border-r border-[#3e3e42] flex flex-col items-center py-2">
                                     <button className="w-12 h-12 flex items-center justify-center text-white relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-white">
@@ -260,7 +260,7 @@ export default function Voronoi() {
                     <div className="relative order-2 lg:order-1">
                         <div className="relative border border-slate-700/50 bg-slate-900/50 backdrop-blur-sm shadow-xl overflow-hidden">
                             {/* Code editor preview */}
-                            <div className="h-[500px] flex flex-col bg-[#1e1e1e]">
+                            <div className="h-125 flex flex-col bg-[#1e1e1e]">
                                 {/* Tab Bar */}
                                 <div className="h-9 bg-[#252526] border-b border-[#3e3e42] flex items-center">
                                     <div className="flex items-center gap-2 px-3 py-1 bg-[#1e1e1e] border-t-2 border-t-[#007acc]">

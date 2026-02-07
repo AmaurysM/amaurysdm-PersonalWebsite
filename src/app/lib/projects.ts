@@ -1,0 +1,201 @@
+import { Project } from "../types/project";
+
+export const projects: Project[] = [
+  {
+    title: "Voronoi",
+    description:
+      "A modern developer knowledge management web app for organizing libraries, folders, and code snippets in a fast, scalable interface.",
+    features: [
+      "OAuth authentication with GitHub and Google",
+      "Library, folder, and snippet organization",
+      "Scalable nested data structures",
+      "Global state management with Zustand",
+      "Optimistic UI updates with minimal re-renders",
+      "Polished loading, empty, and error states",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "NextAuth",
+      "Supabase",
+      "PostgreSQL",
+      "Zustand",
+      "Tailwind CSS",
+      "DaisyUI",
+    ],
+    githubLink: "https://github.com/AmaurysM/fractal",
+    otherLink: "https://www.voronoi.space",
+    showcaseLink: "/voronoi",
+    category: "web",
+    featured: true,
+    image: "/voronoi-logo.svg",
+  },
+  {
+    title: "Line Trainer",
+    description:
+      "Comprehensive training management system for National Air Transportation Association, enabling organizations to track certifications, manage modules, and facilitate digital sign-offs.",
+    features: [
+      "Multi-organization architecture with isolated training environments",
+      "Role-based access control (Students, Trainers, Coordinators)",
+      "Hierarchical module structure with version tracking",
+      "Digital signature system for compliance verification",
+      "Email invitation workflow with Resend integration",
+      "Progress tracking with real-time analytics dashboard",
+      "User lifecycle management with archiving and soft deletion",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "NextAuth",
+      "Zod",
+      "Resend",
+      "Tailwind CSS",
+    ],
+    githubLink: "https://github.com/AmaurysM/nata-trainer",
+    showcaseLink: "/nata-trainer",
+    category: "web",
+    featured: true,
+    image: "/linetrainer-logo.svg",
+  },
+  {
+    title: "Line Tracker",
+    description:
+      "Single-page operational web app for tracking aircraft ground services in real time, built specifically for airport ramp and line service teams.",
+    features: [
+      "Real-time aircraft ground service tracking",
+      "Single-page ramp board with no navigation",
+      "Card and high-density list view modes",
+      "Independent service completion tracking",
+      "Arrival and departure time logging",
+      "Service-type filtering and tail number search",
+      "Soft deletion with full lifecycle timestamps",
+      "Designed around real ramp workflows",
+    ],
+    technologies: ["Next.js", "React", "MongoDB", "TypeScript", "Tailwind CSS"],
+    githubLink: "https://github.com/AmaurysM/line-tracker",
+    showcaseLink: "/line-tracker",
+    category: "web",
+    featured: true,
+    //image: "/linetracker-logo.svg"
+  },
+  {
+    title: "Stock Trading Platform",
+    description:
+      "A simulated stock trading web application where users buy, sell, and trade stocks using virtual currency.",
+    features: [
+      "Server-side rendering with Next.js",
+      "Responsive design using Tailwind CSS",
+      "Robust data handling with MongoDB & Prisma",
+      "Secure authentication with BetterAuth",
+      "Integrated social features including posts and comments",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB",
+      "Prisma",
+      "BetterAuth",
+    ],
+    githubLink: "https://github.com/AmaurysM/mabbr-senior-project",
+    otherLink: "https://www.mabbr.net",
+    showcaseLink: "/mabbr",
+    category: "web",
+    featured: true,
+    image: "/mabbr-logo.ico",
+  },
+  {
+    title: "RockSlide (CodeQuest)",
+    description:
+      "Android strategy game where players navigate a rock across a compact platform by strategically placing directional arrow pieces.",
+    features: [
+      "Interactive rock movement mechanics",
+      "Drag-and-drop directional controls",
+      "Persistent progress tracking",
+      "Strategic puzzle gameplay",
+      "State management with Jetpack Compose",
+    ],
+    technologies: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Room DB",
+      "SQLite",
+      "Android SDK",
+    ],
+    githubLink: "https://github.com/AmaurysM/CodeQuest",
+    category: "mobile",
+    featured: false,
+    //image: "/project-rockslide.jpg"
+  },
+
+  {
+    title: "Guessing Game",
+    description:
+      "Interactive JavaFX game challenging players to predict whether a displayed shape will be a circle or a square, with animated visual feedback.",
+    features: [
+      "Dynamic shape animations",
+      "Color-coded guess feedback",
+      "Persistent guess tracking",
+      "Database-backed game state",
+      "Smooth user interaction",
+    ],
+    technologies: [
+      "Java",
+      "JavaFX",
+      "JDBC",
+      "Microsoft Access",
+      "Database Management",
+    ],
+    githubLink: "https://github.com/AmaurysM/GuessingGame",
+    category: "desktop",
+    //image: "/project-guessing.jpg"
+  },
+  {
+    title: "Java Blockchain",
+    description:
+      "A comprehensive blockchain implementation demonstrating core cryptocurrency features, including digital signatures, proof of work, and secure wallet transactions.",
+    features: [
+      "Blocks with data storage and integrity",
+      "Digital signature chaining",
+      "Proof of Work validation system",
+      "Elliptic-Curve cryptography for wallets",
+      "Secure fund transfer mechanisms",
+      "Transaction verification",
+    ],
+    technologies: [
+      "Java",
+      "Cryptography",
+      "SHA-256 Hashing",
+      "Elliptic-Curve",
+      "Digital Signatures",
+    ],
+    githubLink: "https://github.com/AmaurysM/BlockchainConcept",
+    category: "backend",
+    featured: true,
+    //image: "/project-blockchain.jpg"
+  },
+  {
+    title: "Asteroids Game",
+    description:
+      "Classic Asteroids-style arcade game built with p5.js, featuring dynamic gameplay, collision detection, and progressive difficulty.",
+    features: [
+      "Responsive player-controlled spaceship",
+      "Procedurally generated asteroids",
+      "Bullet-asteroid collision mechanics",
+      "Score tracking and multiple lives system",
+    ],
+    technologies: [
+      "React",
+      "p5.js",
+      "TypeScript",
+      "Game Development",
+      "Interactive Animation",
+    ],
+    githubLink: "https://github.com/AmaurysM",
+    otherLink: "/asteroids",
+    isInternalLink: true,
+    category: "web",
+    //image: "/project-asteroids.jpg"
+  },
+];

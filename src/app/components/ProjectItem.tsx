@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,11 +27,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
   const LinkComponent = isInternalLink ? Link : "a";
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
+    <div
       className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700"
     >
       <div
@@ -57,12 +52,6 @@ const ProjectItem = ({ project }: { project: Project }) => {
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
                 {title}
               </h3>
-
-              {/* {featured && (
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/15 text-primary">
-                  Featured
-                </span>
-              )} */}
             </div>
 
             {category && (
@@ -83,7 +72,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
           {technologies.map((tech, i) => (
             <span
               key={i}
-              className="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+              className="text-xs font-medium px-3 py-1 rounded-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             >
               {tech}
             </span>
@@ -102,28 +91,24 @@ const ProjectItem = ({ project }: { project: Project }) => {
               aria-expanded={isExpanded}
             >
               {isExpanded ? "Collapse details" : "Expand details"}
-              <motion.span
-                animate={{ rotate: isExpanded ? 180 : 0 }}
+              <div
                 className="ml-2"
               >
                 <FaChevronDown />
-              </motion.span>
+              </div>
             </button>
 
-            <AnimatePresence>
+            <div>
               {isExpanded && (
-                <motion.ul
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
+                <div
                   className="mb-6 list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300"
                 >
                   {features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
-                </motion.ul>
+                </div>
               )}
-            </AnimatePresence>
+            </div>
           </>
         )}
 
@@ -135,7 +120,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 rounded-lg text-white text-sm font-medium gap-2"
+              className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 rounded-xs text-white text-sm font-medium gap-2"
             >
               <FaGithub className="w-4 h-4" />
               View Source
@@ -147,7 +132,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
               href={otherLink}
               {...(!isInternalLink ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium gap-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+              className="inline-flex items-center px-4 py-2 rounded-xs text-sm font-medium gap-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             >
               <FaExternalLinkAlt className="w-4 h-4" />
               {isInternalLink ? "View Project" : "Live Demo"}
@@ -155,7 +140,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
           )}
         </div>
       </div>
-    </motion.article>
+    </div>
   );
 };
 
