@@ -20,7 +20,7 @@ export default function LineTrackerLanding() {
             {/* Top bar – scaled down on mobile */}
             <div className="flex items-center text-xs sm:text-sm font-medium text-slate-200 bg-slate-800/50 border border-slate-700/50">
                 <div
-                    onClick={() => (window.location.href = "https://www.amaurydelossantos.com")}
+                    onClick={() => (window.location.href = "https://www.amaurysdelossantos.com")}
                     className="flex-1 px-3 py-1.5 sm:px-4 sm:py-2 hover:bg-slate-700/70 transition cursor-pointer"
                 >
                     Return
