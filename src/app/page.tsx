@@ -302,7 +302,8 @@ const Home = () => {
                 </div>
                 <div>
                   <Link
-                    href="https://linkedin.com/in/amaurys-delossantos-mendez-2a57b1213"
+                    href="https://www.linkedin.com/in/amaurys-de-los-santos-mendez-2a57b1213/"
+                    target="_blank"
                     className="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     aria-label="LinkedIn"
                   >
@@ -312,6 +313,7 @@ const Home = () => {
                 <div>
                   <Link
                     href="https://github.com/AmaurysM"
+                    target="_blank"
                     className="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     aria-label="GitHub"
                   >
