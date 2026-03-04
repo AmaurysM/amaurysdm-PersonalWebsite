@@ -28,6 +28,7 @@ export const projects: Project[] = [
     showcaseLink: "/voronoi",
     category: "web",
     featured: true,
+    invertOnTheme: true,
     image: "/voronoi-logo.svg",
   },
   {
@@ -57,6 +58,7 @@ export const projects: Project[] = [
     category: "web",
     featured: true,
     image: "/linetrainer-logo.svg",
+    invertOnTheme: false,
   },
   {
     title: "Line Tracker",
@@ -77,7 +79,6 @@ export const projects: Project[] = [
     showcaseLink: "/line-tracker",
     category: "web",
     featured: true,
-    //image: "/linetracker-logo.svg"
   },
   {
     title: "Stock Trading Platform",
@@ -103,6 +104,7 @@ export const projects: Project[] = [
     showcaseLink: "/mabbr",
     category: "web",
     featured: true,
+    invertOnTheme: true,
     image: "/mabbr-logo.ico",
   },
   {
@@ -126,9 +128,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/AmaurysM/CodeQuest",
     category: "mobile",
     featured: false,
-    //image: "/project-rockslide.jpg"
   },
-
   {
     title: "Guessing Game",
     description:
@@ -149,7 +149,6 @@ export const projects: Project[] = [
     ],
     githubLink: "https://github.com/AmaurysM/GuessingGame",
     category: "desktop",
-    //image: "/project-guessing.jpg"
   },
   {
     title: "Java Blockchain",
@@ -173,7 +172,6 @@ export const projects: Project[] = [
     githubLink: "https://github.com/AmaurysM/BlockchainConcept",
     category: "backend",
     featured: true,
-    //image: "/project-blockchain.jpg"
   },
   {
     title: "Asteroids Game",
@@ -196,6 +194,5 @@ export const projects: Project[] = [
     otherLink: "/asteroids",
     isInternalLink: true,
     category: "web",
-    //image: "/project-asteroids.jpg"
   },
 ];

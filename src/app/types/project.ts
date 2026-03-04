@@ -12,4 +12,5 @@ export type Project = {
   category: ProjectCategory;
   featured?: boolean;
   image?: string;
+  invertOnTheme?: boolean;
 };

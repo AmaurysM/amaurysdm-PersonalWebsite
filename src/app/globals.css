@@ -50,6 +50,9 @@
   --md-sys-color-surface-container: rgb(255 233 228);
   --md-sys-color-surface-container-high: rgb(251 227 221);
   --md-sys-color-surface-container-highest: rgb(246 221 215);
+
+  /* Light mode: render SVG logos as dark (near-black) to show on light backgrounds */
+  --logo-filter: brightness(0) saturate(100%);
 }
 
 .dark {
@@ -102,4 +105,7 @@
   --md-sys-color-surface-container: rgb(41 29 25);
   --md-sys-color-surface-container-high: rgb(53 39 35);
   --md-sys-color-surface-container-highest: rgb(64 49 45);
+
+  /* Dark mode: render SVG logos as white to show on dark backgrounds */
+  --logo-filter: brightness(0) invert(1);
 }

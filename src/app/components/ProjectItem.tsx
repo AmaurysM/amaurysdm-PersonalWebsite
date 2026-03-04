@@ -20,6 +20,7 @@ const ProjectItem = ({ project }: { project: Project }) => {
     featured,
     image,
     category,
+    invertOnTheme = false,
   } = project;
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -56,7 +57,8 @@ const ProjectItem = ({ project }: { project: Project }) => {
                 src={image}
                 alt={`${title} logo`}
                 fill
-                className="object-contain"
+                className="object-contain transition-all duration-300"
+                style={invertOnTheme ? { filter: "var(--logo-filter)" } : undefined}
               />
             </div>
           )}
