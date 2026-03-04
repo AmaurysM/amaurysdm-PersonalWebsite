@@ -28,10 +28,24 @@ const ProjectItem = ({ project }: { project: Project }) => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700"
+      className="overflow-hidden shadow-lg"
+      style={{
+        backgroundColor: "var(--md-sys-color-surface-container-low)",
+        border: "1px solid var(--md-sys-color-outline-variant)",
+      }}
     >
       <div
-        className={`p-6 md:p-8 ${showcaseLink ? "cursor-pointer hover:bg-zinc-800/40 transition" : ""}`}
+        className={`p-6 md:p-8 transition-colors duration-200 ${showcaseLink ? "cursor-pointer" : ""}`}
+        style={{ backgroundColor: "transparent" }}
+        onMouseEnter={(e) => {
+          if (showcaseLink)
+            (e.currentTarget as HTMLDivElement).style.backgroundColor =
+              "color-mix(in srgb, var(--md-sys-color-primary) 6%, transparent)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLDivElement).style.backgroundColor =
+            "transparent";
+        }}
         onClick={() => showcaseLink && router.push(showcaseLink)}
       >
         {/* Title row */}
@@ -48,22 +62,28 @@ const ProjectItem = ({ project }: { project: Project }) => {
           )}
 
           <div className={image ? "flex-1" : ""}>
-            <div className="flex items-center gap-2">
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
-                {title}
-              </h3>
-            </div>
+            <h3
+              className="text-xl md:text-2xl font-semibold"
+              style={{ color: "var(--md-sys-color-on-surface)" }}
+            >
+              {title}
+            </h3>
 
             {category && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <p
+                className="text-xs mt-1"
+                style={{ color: "var(--md-sys-color-on-surface-variant)" }}
+              >
                 {category}
               </p>
             )}
           </div>
         </div>
 
-
-        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+        <p
+          className="mb-6 leading-relaxed"
+          style={{ color: "var(--md-sys-color-on-surface-variant)" }}
+        >
           {description}
         </p>
 
@@ -72,7 +92,11 @@ const ProjectItem = ({ project }: { project: Project }) => {
           {technologies.map((tech, i) => (
             <span
               key={i}
-              className="text-xs font-medium px-3 py-1 rounded-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+              className="text-xs font-medium px-3 py-1"
+              style={{
+                backgroundColor: "var(--md-sys-color-surface-container-high)",
+                color: "var(--md-sys-color-on-surface-variant)",
+              }}
             >
               {tech}
             </span>
@@ -87,28 +111,27 @@ const ProjectItem = ({ project }: { project: Project }) => {
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);
               }}
-              className="text-primary font-medium text-sm flex items-center mb-4"
+              className="font-medium text-sm flex items-center mb-4 transition-colors duration-200"
+              style={{ color: "var(--md-sys-color-primary)" }}
               aria-expanded={isExpanded}
             >
               {isExpanded ? "Collapse details" : "Expand details"}
-              <div
-                className="ml-2"
-              >
-                <FaChevronDown />
-              </div>
+              <FaChevronDown
+                className="ml-2 transition-transform duration-200"
+                style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
             </button>
 
-            <div>
-              {isExpanded && (
-                <div
-                  className="mb-6 list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300"
-                >
-                  {features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </div>
-              )}
-            </div>
+            {isExpanded && (
+              <div
+                className="mb-6 list-disc pl-5 space-y-2"
+                style={{ color: "var(--md-sys-color-on-surface-variant)" }}
+              >
+                {features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </div>
+            )}
           </>
         )}
 
@@ -120,7 +143,11 @@ const ProjectItem = ({ project }: { project: Project }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 rounded-xs text-white text-sm font-medium gap-2"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium gap-2 transition-colors duration-200"
+              style={{
+                backgroundColor: "var(--md-sys-color-surface-container-highest)",
+                color: "var(--md-sys-color-on-surface)",
+              }}
             >
               <FaGithub className="w-4 h-4" />
               View Source
@@ -132,7 +159,11 @@ const ProjectItem = ({ project }: { project: Project }) => {
               href={otherLink}
               {...(!isInternalLink ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center px-4 py-2 rounded-xs text-sm font-medium gap-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium gap-2 transition-colors duration-200"
+              style={{
+                backgroundColor: "var(--md-sys-color-secondary-container)",
+                color: "var(--md-sys-color-on-secondary-container)",
+              }}
             >
               <FaExternalLinkAlt className="w-4 h-4" />
               {isInternalLink ? "View Project" : "Live Demo"}

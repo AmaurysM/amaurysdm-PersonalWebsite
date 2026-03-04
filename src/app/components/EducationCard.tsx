@@ -17,23 +17,46 @@ const EducationCard = ({
   highlights,
   children,
 }: EducationCardProps) => (
-  <div className="bg-white dark:bg-gray-800 p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+  <div
+    className="p-6 shadow-lg"
+    style={{
+      backgroundColor: "var(--md-sys-color-surface-container-low)",
+      border: "1px solid var(--md-sys-color-outline-variant)",
+    }}
+  >
+    <h3
+      className="text-xl font-semibold mb-1"
+      style={{ color: "var(--md-sys-color-on-surface)" }}
+    >
       {degree}
     </h3>
-    <p className="text-gray-600 dark:text-gray-300 text-lg mb-1">
+    <p
+      className="text-lg mb-1"
+      style={{ color: "var(--md-sys-color-on-surface-variant)" }}
+    >
       {institution}
     </p>
-    <p className="text-gray-500 dark:text-gray-400 mb-2">{period}</p>
+    <p
+      className="mb-2"
+      style={{ color: "var(--md-sys-color-outline)" }}
+    >
+      {period}
+    </p>
 
     {gpa && (
-      <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mb-2">
+      <p
+        className="text-sm font-medium mb-2"
+        style={{ color: "var(--md-sys-color-tertiary)" }}
+      >
         GPA: {gpa}
       </p>
     )}
 
     {highlights && (
-      <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm space-y-1 mb-4">
+      <ul
+        className="list-disc list-inside text-sm space-y-1 mb-4"
+        style={{ color: "var(--md-sys-color-on-surface-variant)" }}
+      >
         {highlights.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
